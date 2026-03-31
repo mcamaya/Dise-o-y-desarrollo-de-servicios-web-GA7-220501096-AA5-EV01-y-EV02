@@ -3,6 +3,7 @@ import cors from 'cors';
 import 'dotenv/config';
 
 import authRoutes from './src/routes/authRoutes.js';
+import userRoutes from './src/routes/userRoutes.js';
 
 const app = express();
 
@@ -10,6 +11,7 @@ app.use(cors());
 app.use(json());
 
 app.use('/api/auth', authRoutes);
+app.use('/api/usuarios', userRoutes);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Servidor funcionando' });

@@ -41,3 +41,21 @@ export const createUser = async (nombre, email, passwordHash) => {
     throw error;
   }
 };
+
+/**
+ * Obtiene todos los usuarios de la base de datos sin sus contraseñas.
+ * 
+ * @returns {Promise<Array<Object>>} Lista de usuarios.
+ * @throws {Error} Si ocurre un error al consultar la base de datos.
+ */
+export const getAllUsers = async () => {
+  try {
+    const [rows] = await pool.query(
+      'SELECT usuarioId, nombre, email FROM Usuario'
+    );
+    return rows;
+  } catch (error) {
+    console.error('Error en getAllUsers:', error);
+    throw error;
+  }
+};
